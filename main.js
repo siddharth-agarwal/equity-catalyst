@@ -13,5 +13,11 @@ const apiUrl = `${url}/${ticker}/${core}${token}`
 console.log(apiUrl)
 
 fetch(apiUrl)
-    .then(promise => promise.json())
-    .then(data => console.log(data))
+    .then(data => data.json()) //prints only the ticker
+    .then(data => {
+        data.trades.forEach(data => {
+            console.log(data.price)
+        });
+
+        console.log(data.quote.symbol)
+    })
