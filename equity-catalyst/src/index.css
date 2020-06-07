@@ -15,8 +15,11 @@ body {
   transition: 0.4 ease_out;
 }
 
-.App.night {
+.App_night {
   background-image: url('./assets/night.jpg');
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4 ease_out;
 }
 
 
@@ -27,14 +30,14 @@ main {
 
 .search-box {
   width: 100%;
-  margin: 25px 0 100px;
+  margin: 35px 0px 50px;
 }
 
 .search-box .search-bar {
   display: block;
   width: 100%;
   padding: 15px;
-  margin: 0 0 75px;
+  margin: 0 0 0px;
   appearance:none;
   background: none;
   border: none;
@@ -45,4 +48,20 @@ main {
   color: #010101;
   font-size: 20px;
   transition: 0.4s ease;
+}
+
+.data-box .symbolName {
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+
+}
+
+.data-box .closePrice {
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+
 }
