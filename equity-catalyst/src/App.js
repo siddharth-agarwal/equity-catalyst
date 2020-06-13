@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
+import Plots from './components/Plots'
 
 const apiVariables= {
   url: 'https://cloud.iexapis.com/stable/stock',
@@ -6,9 +7,8 @@ const apiVariables= {
   token: '?token=pk_8bcad0d669594bdfb4fe4c79a8558d23'
 }
 
-
 function App() {
-
+  
   var d = new Date();
   var FIVE_PM = 17, FOUR_AM = 4;
   var is_night = (d.getHours() > FIVE_PM || d.getHours < FOUR_AM)
@@ -31,6 +31,9 @@ function App() {
   return (
     <div className={((is_night) ? 'App_night' : 'App')}>
       <main>
+      <div className = "Plots">
+        <Plots/>
+      </div>
       <div className="search-box">
           <input
             type="text"
@@ -72,6 +75,11 @@ function App() {
         ) : ('')}
       </main>
     </div>
+  
+
+
+
+
   );
 }
 
