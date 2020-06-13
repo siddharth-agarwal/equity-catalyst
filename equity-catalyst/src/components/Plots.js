@@ -26,20 +26,38 @@ class Plots extends Component {
                     }
                 },
                 candlestick: {
-                    colors: {
-                      wick: {
-                        useFillColor: true,
-                      }
+                    wick: {
+                      useFillColor: true,
+                    }
+                },
+                grid: {
+                    yaxis: {
+                        lines: {
+                          show: false
+                        }
+                    },
+                    xaxis: {
+                        lines: {
+                          show: false
+                        }
                     }
                 }
             },
             series: [
                 {
                     name: 'Daily Candles',
-                    data: [
-                        [1, 6593.34, 6600, 6582.63, 6600], 
-                        [2, 6595.16, 6604.76, 6590.73, 6593.86]
-                      ]
+                    data: [{
+                        x: '1',
+                        y: [51.98, 56.29, 51.59, 53.85]
+                      },
+                      {
+                        x: '2',
+                        y: [53.66, 54.99, 51.35, 52.95]
+                      },
+                      {
+                        x: '3',
+                        y: [53.66, 54.99, 51.35, 52.95]
+                      }]
                 }],
         }
     };
@@ -47,7 +65,7 @@ class Plots extends Component {
         return <Chart
         options={this.state.options}
         series={this.state.series}
-        type="candle"
+        type="candlestick"
         height="450"
         width="100%"
         />
