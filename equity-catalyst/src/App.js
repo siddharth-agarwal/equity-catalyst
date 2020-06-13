@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import Plots from './components/Plots'
+import Candlestick from './plots/candlestick'
+import Bar from './plots/bar'
 
 const apiVariables= {
   url: 'https://cloud.iexapis.com/stable/stock',
@@ -31,8 +32,11 @@ function App() {
   return (
     <div className={((is_night) ? 'App_night' : 'App')}>
       <main>
-      <div className = "Plots">
-        <Plots/>
+      <div className = "Daily">
+        <Candlestick/>
+      </div>
+      <div className = "Volume">
+        <Bar/>
       </div>
       <div className="search-box">
           <input

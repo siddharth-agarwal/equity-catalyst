@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Chart from 'react-apexcharts'
 
-class Plots extends Component {
+class Bar extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,7 +17,7 @@ class Plots extends Component {
                     enabled: false
                   },
                   title: {
-                    text: "Daily Candle Chart",
+                    text: "Volume",
                     align: "center",
                     margin: 20,
                     offsetY: 20,
@@ -48,15 +48,15 @@ class Plots extends Component {
                     name: 'Daily Candles',
                     data: [{
                         x: '1',
-                        y: [51.98, 56.29, 51.59, 53.85]
+                        y: [1]
                       },
                       {
                         x: '2',
-                        y: [53.66, 54.99, 51.35, 52.95]
+                        y: [2]
                       },
                       {
                         x: '3',
-                        y: [53.66, 54.99, 51.35, 52.95]
+                        y: [3]
                       }]
                 }],
         }
@@ -65,11 +65,11 @@ class Plots extends Component {
         return <Chart
         options={this.state.options}
         series={this.state.series}
-        type="candlestick"
+        type="bar"
         height="450"
         width="100%"
         />
     }
 }
 
-export default Plots;
+export default Bar;
