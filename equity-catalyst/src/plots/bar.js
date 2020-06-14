@@ -1,74 +1,34 @@
 import React, { Component } from 'react'
-import Chart from 'react-apexcharts'
+import Chart from "react-google-charts";
 
 class Bar extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            options: {
-                chart: {
-                    background: '#f4f4f4',
-                    foreColor: '#333'
-                },
-                fill: {
-                    colors: ["#F44336"]
-                  },
-                  dataLabels: {
-                    enabled: false
-                  },
-                  title: {
-                    text: "Volume",
-                    align: "center",
-                    margin: 20,
-                    offsetY: 20,
-                    style: {
-                      fontSize: "25px"
-                    }
-                },
-                candlestick: {
-                    wick: {
-                      useFillColor: true,
-                    }
-                },
-                grid: {
-                    yaxis: {
-                        lines: {
-                          show: false
-                        }
-                    },
-                    xaxis: {
-                        lines: {
-                          show: false
-                        }
-                    }
-                }
-            },
-            series: [
-                {
-                    name: 'Daily Candles',
-                    data: [{
-                        x: '1',
-                        y: [1]
-                      },
-                      {
-                        x: '2',
-                        y: [2]
-                      },
-                      {
-                        x: '3',
-                        y: [3]
-                      }]
-                }],
-        }
-    };
     render() {
         return <Chart
-        options={this.state.options}
-        series={this.state.series}
-        type="bar"
-        height="450"
-        width="100%"
-        />
+        width={'100%'}
+        height={350}
+        chartType="ColumnChart"
+        loader={<div>Loading Chart</div>}
+        options={{
+            title: 'Daily Volume',
+            titleTextStyle: {
+                color: 'white',  
+                fontSize: 28  // any HTML string color ('red', '#cc00cc')
+            },
+            backgroundColor: '#000000',
+            chartArea: { width: '75%' },
+            legend:{position:'none'} 
+        }}
+        data={[
+          ['', ''],
+          ['Day 1', 8175000],
+          ['Day 2', 3792000],
+          ['Day 3', 2695000],
+          ['Day 4', 2099000],
+          ['Day 5', 1526000],
+        ]}
+        // For tests
+        rootProps={{ 'data-testid': '1' }}
+      />
     }
 }
 
