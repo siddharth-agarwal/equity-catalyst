@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Chart from "react-google-charts";
 
-class Candlestick extends Component {
-
-    render() {
+const Candlestick = (props) => {
+        console.log(props.data)
+        if (Object.keys(props.data).length) {
           
+        }
+
         return <Chart
         width={'100%'}
         height={350}
@@ -36,6 +38,5 @@ class Candlestick extends Component {
         rootProps={{ 'data-testid': '2' }}
       />
     }
-}
 
 export default Candlestick;

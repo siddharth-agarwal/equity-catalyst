@@ -28,12 +28,7 @@ function App() {
           setTicker('')
         })
 
-      const historialDataCall = `${apiVariables.url}/${ticker}/chart/${apiVariables.range}${apiVariables.token}`
-      fetch(historialDataCall)
-        .then(historialData => historialData.json())
-        .then(historialData => {
-          
-        })
+  
 
       }
   }
@@ -43,12 +38,12 @@ function App() {
       <main>
       <div className = "Daily">
         <Candlestick
-          data={ historialData } />
-      </div>
+          data= { returnData } />
+      </div> 
       <div className = "Volume">
         <Bar/>
       </div>
-      <div className="search-box">
+        <div className="search-box">
           <input
             type="text"
             className="search-bar"
@@ -89,11 +84,6 @@ function App() {
         ) : ('')}
       </main>
     </div>
-  
-
-
-
-
   );
 }
 
