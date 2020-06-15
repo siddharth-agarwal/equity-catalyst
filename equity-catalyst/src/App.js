@@ -5,7 +5,8 @@ import Bar from './plots/bar'
 const apiVariables= {
   url: 'https://cloud.iexapis.com/stable/stock',
   request: 'book',
-  token: '?token=pk_8bcad0d669594bdfb4fe4c79a8558d23'
+  token: '?token=pk_8bcad0d669594bdfb4fe4c79a8558d23',
+  range: '1m'
 }
 
 function App() {
@@ -18,14 +19,22 @@ function App() {
   const [returnData, setReturnData] = useState({})
   const search = evt => {
     if (evt.key === "Enter") {
-      const apiUrl = `${apiVariables.url}/${ticker}/${apiVariables.request}${apiVariables.token}`
+      const tickerDataCall = `${apiVariables.url}/${ticker}/${apiVariables.request}${apiVariables.token}`
 
-      fetch(apiUrl)
-        .then(data => data.json())
-        .then(data => {
-          setReturnData(data)
+      fetch(tickerDataCall)
+        .then(tickerData => tickerData.json())
+        .then(tickerData => {
+          setReturnData(tickerData)
           setTicker('')
         })
+
+      const historialDataCall = `${apiVariables.url}/${ticker}/chart/${apiVariables.range}${apiVariables.token}`
+      fetch(historialDataCall)
+        .then(historialData => historialData.json())
+        .then(historialData => {
+          
+        })
+
       }
   }
 
@@ -33,7 +42,8 @@ function App() {
     <div className={((is_night) ? 'App_night' : 'App')}>
       <main>
       <div className = "Daily">
-        <Candlestick/>
+        <Candlestick
+          data={ historialData } />
       </div>
       <div className = "Volume">
         <Bar/>
