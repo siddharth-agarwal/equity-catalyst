@@ -16,18 +16,27 @@ function App() {
   var is_night = (d.getHours() > FIVE_PM || d.getHours < FOUR_AM)
 
   const [ticker, setTicker] = useState('')
-  const [returnData, setReturnData] = useState({})
+  const [baseData, setBaseData] = useState({})
+  const [historicalData, setHistoricalData] = useState({})
+
   const search = evt => {
     if (evt.key === "Enter") {
-      const tickerDataCall = `${apiVariables.url}/${ticker}/${apiVariables.request}${apiVariables.token}`
-
-      fetch(tickerDataCall)
+      
+      const baseDataCall = `${apiVariables.url}/${ticker}/${apiVariables.request}${apiVariables.token}`
+      fetch(baseDataCall)
         .then(tickerData => tickerData.json())
         .then(tickerData => {
-          setReturnData(tickerData)
+          setBaseData(tickerData)
           setTicker('')
         })
-
+      
+      
+      const historicalDataCall = `${apiVariables.url}/${ticker}/chart/${apiVariables.range}${apiVariables.token}`
+      fetch(historicalDataCall)
+        .then(tickerData => tickerData.json())
+        .then(tickerData => {
+          setHistoricalData(tickerData)
+        })
   
 
       }
@@ -38,7 +47,7 @@ function App() {
       <main>
       <div className = "Daily">
         <Candlestick
-          data= { returnData } />
+          data = { historicalData } />
       </div> 
       <div className = "Volume">
         <Bar/>
@@ -53,30 +62,30 @@ function App() {
             onKeyPress={search}
           />
       </div>
-      {(typeof returnData.quote != "undefined") ? (
+      {(typeof baseData.quote != "undefined") ? (
         <div>
           <table className="data-box">
             <thead>
               <tr>
-                <th colSpan="2">{returnData.quote.symbol}</th>
+                <th colSpan="2">{baseData.quote.symbol}</th>
               </tr>
             </thead>
             <tbody>
               <tr className="symbolData">
                 <td>Company</td>
-                <td>{returnData.quote.companyName}</td>
+                <td>{baseData.quote.companyName}</td>
               </tr>
               <tr className="symbolData">
                 <td>Closing Price</td>
-                <td>{returnData.quote.close != null ? "$"+returnData.quote.close : "n/a"}; (Source: {returnData.quote.closeSource})</td>
+                <td>{baseData.quote.close != null ? "$"+baseData.quote.close : "n/a"}; (Source: {baseData.quote.closeSource})</td>
               </tr>
               <tr className="symbolData">
                 <td>Latest Price</td>
-                <td>${returnData.quote.latestPrice}; (Source: {returnData.quote.latestSource})</td>
+                <td>${baseData.quote.latestPrice}; (Source: {baseData.quote.latestSource})</td>
               </tr>
               <tr className="symbolData">
                 <td>Primary Listed Exchange</td>
-                <td>{returnData.quote.primaryExchange}</td>
+                <td>{baseData.quote.primaryExchange}</td>
               </tr>
             </tbody>
           </table>
