@@ -48,7 +48,8 @@ function App() {
           data = { historicalData } />
       </div> 
       <div className = "Volume">
-        <Bar/>
+        <Bar
+          data = { historicalData } />
       </div>
         <div className="search-box">
           <input
@@ -61,8 +62,8 @@ function App() {
           />
       </div>
       {(typeof baseData.quote != "undefined") ? (
-        <div>
-          <table className="data-box">
+        <div className="data-box">
+          <table>
             <thead>
               <tr>
                 <th colSpan="2">{baseData.quote.symbol}</th>
@@ -74,12 +75,24 @@ function App() {
                 <td>{baseData.quote.companyName}</td>
               </tr>
               <tr className="symbolData">
-                <td>Closing Price</td>
-                <td>{baseData.quote.close != null ? "$"+baseData.quote.close : "n/a"}; (Source: {baseData.quote.closeSource})</td>
+                <td>Latest Price ({baseData.quote.latestSource})</td>
+                <td>${baseData.quote.latestPrice}</td>
               </tr>
               <tr className="symbolData">
-                <td>Latest Price</td>
-                <td>${baseData.quote.latestPrice}; (Source: {baseData.quote.latestSource})</td>
+                <td>Previous Close</td>
+                <td>{baseData.quote.previousClose != null ? "$"+baseData.quote.previousClose : "n/a"}</td>
+              </tr>
+              <tr className="symbolData">
+                <td>% Change</td>
+                <td>{baseData.quote.changePercent != null ? baseData.quote.changePercent*100+'%' : "n/a"}</td>
+              </tr>
+              <tr className="symbolData">
+                <td>Traded Volume (IEX)</td>
+                <td>{baseData.quote.iexVolume != null ? baseData.quote.iexVolume : "n/a"}</td>
+              </tr>
+              <tr className="symbolData">
+                <td>Avg Daily Traded Volume</td>
+                <td>{baseData.quote.avgTotalVolume != null ? baseData.quote.avgTotalVolume : "n/a"}</td>
               </tr>
               <tr className="symbolData">
                 <td>Primary Listed Exchange</td>

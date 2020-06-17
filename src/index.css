@@ -41,52 +41,47 @@ main {
   display: block;
   width: 100%;
   padding: 15px;
-  margin: 0 0 0px;
   appearance:none;
-  background: none;
   border: none;
   outline: none;
-  background-color: rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 1) none;
   border-radius: 16px 16px 16px 16px;
-  margin-top: 25px;
+  margin: 25px 0 0px;
   color: #010101;
   font-size: 28px;
   transition: 0.4s ease;
 }
 
 .data-box {
-  width: 60%;
-  grid-column: 1;
-  grid-row: 2;
   margin: 25px 25px 25px 25px;
   padding: 25px;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 500;
-  background-color:lightgray;
+  background-color:black;
 }
 
 table {
   table-layout: auto;
   border-collapse: collapse;
-  border: 3px solid cornflowerblue;
+  border: 4px solid black;
 }
 
 table th {
   border: 2px solid black;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
 }
 
 table td {
   border: 2px solid black;
-  padding: 10px;
+  padding: 5px;
   text-align: right;
 }
 
 tr:nth-child(odd) {
-  background-color:lightslategray;
+  background-color:darkgray;
 }
 
 tr:nth-child(even) {
-  background-color:slategray;
+  background-color:lightgray;
 }
