@@ -37,8 +37,6 @@ function App() {
         .then(tickerData => {
           setHistoricalData(tickerData)
         })
-  
-
       }
   }
 
