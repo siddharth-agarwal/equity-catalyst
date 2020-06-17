@@ -13,7 +13,7 @@ function App() {
   
   var d = new Date();
   var FIVE_PM = 17, FOUR_AM = 4;
-  var is_night = (d.getHours() > FIVE_PM || d.getHours < FOUR_AM)
+  var is_night = (d.getHours() > FIVE_PM || d.getHours() < FOUR_AM)
 
   const [ticker, setTicker] = useState('')
   const [baseData, setBaseData] = useState({})
