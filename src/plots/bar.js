@@ -28,7 +28,7 @@ const Bar = (props) => {
     options={{
       title: 'Daily Traded Volume (Past 30 Days)',
       titleTextStyle: {
-        color: 'black',
+        color: 'white',
         fontSize: 28
       },
       vAxis: {
