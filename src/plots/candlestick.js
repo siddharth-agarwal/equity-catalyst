@@ -1,14 +1,6 @@
 import React from 'react'
 import Chart from "react-google-charts";
 
-function rearrange(rows, pos) {
-  return rows.map(function(cols) {
-    return pos.map(function(i) {
-      return cols[i];
-    });
-  });
-}
-
 const Candlestick = (props) => {
 
         console.log(props.data)
@@ -16,9 +8,10 @@ const Candlestick = (props) => {
         let dataArray = []
         
         if (Object.keys(props.data).length) {
-          dataArray = props.data.map(obj => Object.values(obj).slice(0,5));
+                 props.data.forEach(function (a) {
+            dataArray.push([a.date, a.low, a.open, a.close, a.high])
+          })
           dataArray.unshift(['Date','Low','Open','Close','High'])
-          dataArray = rearrange(dataArray, [0, 4, 1, 2, 3]);
         }
       
         return <Chart
